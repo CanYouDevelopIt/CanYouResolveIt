@@ -52,7 +52,7 @@ namespace CanYouResolveIt
                     else { Console.WriteLine("L'extension du fichier est incorrecte."); }
                 }
                 else { Console.WriteLine("Le Sudoku résolu est introuvable."); }
-      
+                Console.ReadKey();
         }
     }
 }
