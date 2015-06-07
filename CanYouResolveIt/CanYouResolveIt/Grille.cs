@@ -147,5 +147,77 @@ namespace CanYouResolveIt
 
             return messageErreur;
         }
+
+        internal void print()
+        {
+            Console.WriteLine("-------------------");
+            Console.WriteLine(nom);
+            Console.WriteLine(date);
+            Console.WriteLine(symboles);
+            for (int i = 0; i < Symboles.Length; i++)
+            {
+                for (int j = 0; j < Symboles.Length; j++)
+                {
+                    Console.Write(Tab[i][j].Valeur);
+                }
+                Console.WriteLine("");
+            }
+        }
+
+        internal bool absentSurLigne(char val, int i)
+        {
+            for (int j=0; j < symboles.Length; j++)
+                if (tab[i][j].Valeur == val)
+                    return false;
+            return true;
+        }
+
+        internal bool absentSurColonne(char val, int j)
+        {
+            for (int i=0; i < Symboles.Length; i++)
+                if (tab[i][j].Valeur == val)
+                    return false;
+            return true;
+        }
+
+        internal bool absentSurBloc(char val, int i, int j)
+        {
+            int longueurBloc = (int)Math.Sqrt(symboles.Length);
+            int _i = i - (i % longueurBloc);
+            int _j = j - (j % longueurBloc);
+
+            for (i = _i; i < _i + longueurBloc; i++)
+                for (j = _j; j < _j + longueurBloc; j++)
+                    if (tab[i][j].Valeur == val)
+                        return false;
+
+            return true;
+        }
+
+        internal bool resoudreSudoku(int position)
+        {
+            if (position == symboles.Length*symboles.Length)
+                return true;
+
+            int i = position/symboles.Length;
+            int j = position%symboles.Length;
+
+            if (tab[i][j].Valeur != '.')
+                return resoudreSudoku(position + 1);
+
+            for (int k=0; k < symboles.Length; k++)
+            {
+                if (absentSurLigne(symboles[k], i) && absentSurColonne(symboles[k], j) && absentSurBloc(symboles[k], i, j))
+                {
+                    tab[i][j].Valeur = symboles[k];
+                    if (resoudreSudoku(position + 1))
+                        return true;
+                }
+            }
+            tab[i][j].Valeur = '.';
+
+            return false;
+        }
+
     }
 }
