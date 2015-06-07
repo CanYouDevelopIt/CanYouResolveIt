@@ -24,13 +24,13 @@ namespace CanYouResolveIt
                 else
                 {
                     Console.WriteLine("Veuillez saisir le chemin jusqu'au Sudoku à résoudre :");
-                    //cheminFichier = Console.ReadLine();
-                    cheminFichier = "C:\\Users\\Jeremy\\Desktop\\ESGI\\4A AL\\C#\\Sudoku\\resoudreSudokuOne.sud";
+                    cheminFichier = Console.ReadLine();
+                    //cheminFichier = "C:\\Users\\Jeremy\\Desktop\\ESGI\\4A AL\\C#\\Sudoku\\resoudreSudokuOne.sud";
                 }
 
                 if (File.Exists(cheminFichier))
                 {
-                    if (Path.GetExtension(cheminFichier) == ".sud")
+                    if (Path.GetExtension(cheminFichier) == ".sud" || Path.GetExtension(cheminFichier) == ".sudx")
                     {
                         grilleChargees = monSudokuManager.chargementFichier(cheminFichier);
 
@@ -41,10 +41,10 @@ namespace CanYouResolveIt
                             g.print();
 
                             string messageErreur = g.verifierGrille();
-                            //if (messageErreur != "")
-                            //{
-                            //    Console.WriteLine(messageErreur);
-                            //}
+                            if (messageErreur != "")
+                            {
+                                Console.WriteLine(messageErreur);
+                            }
 
                         }
 

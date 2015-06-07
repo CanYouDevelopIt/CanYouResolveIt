@@ -153,10 +153,10 @@ namespace CanYouResolveIt
             Console.WriteLine("-------------------");
             Console.WriteLine(nom);
             Console.WriteLine(date);
-            Console.WriteLine(symboles);
-            for (int i = 0; i < Symboles.Length; i++)
+            Console.WriteLine(symboles + " | Taille : " + symboles.Length);
+            for (int i = 0; i < symboles.Length; i++)
             {
-                for (int j = 0; j < Symboles.Length; j++)
+                for (int j = 0; j < symboles.Length; j++)
                 {
                     Console.Write(Tab[i][j].Valeur);
                 }
@@ -174,7 +174,7 @@ namespace CanYouResolveIt
 
         internal bool absentSurColonne(char val, int j)
         {
-            for (int i=0; i < Symboles.Length; i++)
+            for (int i=0; i < symboles.Length; i++)
                 if (tab[i][j].Valeur == val)
                     return false;
             return true;
