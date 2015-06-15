@@ -1,0 +1,29 @@
+﻿<Window x:Class="CanYouResolveItWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="400" Width="400">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="74*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="164*"/>
+            <ColumnDefinition Width="231*"/>
+        </Grid.ColumnDefinitions>
+        <Button Margin="24,26,18,9" Name="Charger" Click="Charger_Click" Height="Auto" Width="Auto" RenderTransformOrigin="0.46,0.517">Charger</Button>
+
+        <ListView Margin="24,10,15,11.5" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="Auto" Header="Sudoku" />
+                </GridView>
+            </ListView.View>
+            <Label>Sudoku 1</Label>
+            <Label>Sudoku 2</Label>
+            <Label>Sudoku 3</Label>
+            <Label>Sudoku 4</Label>
+        </ListView>
+
+    </Grid>
+</Window>
