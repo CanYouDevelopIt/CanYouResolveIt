@@ -15,10 +15,12 @@ namespace SuperApplicationWPF
         public ObservableCollection<Grille> GrilleList { get; set; }
 
         public Grille GrilleSelect { get; set; }
+
         public SudokuViewModel()
         {
             NomApplication = "Can You Resolve It";
             GrilleList = new ObservableCollection<Grille>();
+
             GrilleList.Add(new Grille
             {
                 Nom = "Grille 1",
@@ -32,6 +34,7 @@ namespace SuperApplicationWPF
             }
         }
 
+
         internal void ListInfoSudoku(List<Grille> grille)
         {
             GrilleList = new ObservableCollection<Grille>();
@@ -44,6 +47,11 @@ namespace SuperApplicationWPF
                     Date = g.Date,
                     Symboles = g.Symboles
                 });
+            }
+
+            foreach (var gr in GrilleList)
+            {
+                gr.InitTabCase();
             }
 
         }
