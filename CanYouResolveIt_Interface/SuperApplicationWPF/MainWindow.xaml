@@ -14,7 +14,9 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Grid.Column="0">
-            <Button Content="Chargement" Click="Chargement_sudoku" Margin="0,0,148.2,0"/>
+            <Button Content="Chargement fichier" Click="Chargement_sudoku" Margin="0,0,148.2,0"/>
+            <Button Content="Resondre sudoku" Click="Chargement_sudoku" Margin="0,0,148.2,0"/>
+            <Button Content="Vérification sudoku" Click="Chargement_sudoku" Margin="0,0,148.2,0"/>
         </StackPanel>
 
         <StackPanel Grid.Row="0" Grid.Column="1">
