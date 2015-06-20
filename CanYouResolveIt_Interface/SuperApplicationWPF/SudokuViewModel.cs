@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SuperApplicationWPF
 {
@@ -35,23 +36,26 @@ namespace SuperApplicationWPF
         }
 
 
-        internal void ListInfoSudoku(List<Grille> grille)
+        public void ListInfoSudoku(List<Grille> grille)
         {
-            GrilleList = new ObservableCollection<Grille>();
-
             foreach (Grille g in grille)
             {
-                GrilleList.Add(new Grille
+                MessageBox.Show(g.Nom);
+                MessageBox.Show(g.Date);
+                MessageBox.Show(g.Symboles); 
+
+                Grille uneGrille = new Grille
                 {
                     Nom = g.Nom,
                     Date = g.Date,
                     Symboles = g.Symboles
-                });
+                };
+                GrilleList.Add(uneGrille);
             }
 
-            foreach (var gr in GrilleList)
+            foreach (var g in GrilleList)
             {
-                gr.InitTabCase();
+                g.InitTabCase();
             }
 
         }

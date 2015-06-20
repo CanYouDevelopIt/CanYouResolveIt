@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace SuperApplicationWPF
 {
@@ -29,7 +30,6 @@ namespace SuperApplicationWPF
 
         internal List<Grille> chargementFichier(string cheminFichier)
         {
-
             List<Grille> grillesChargees = new List<Grille>();
 
             StreamReader fichier = new StreamReader(cheminFichier);
@@ -51,8 +51,8 @@ namespace SuperApplicationWPF
                 }
                 else { nbLigneGrille++; }
 
-                if (nbLigneGrille == 2) { g.Nom = ligne; }
-                if (nbLigneGrille == 3) { g.Date = ligne; }
+                if (nbLigneGrille == 2) { g.Nom = ligne; /*MessageBox.Show(ligne);*/ }
+                if (nbLigneGrille == 3) { g.Date = ligne; /*MessageBox.Show(ligne);*/ }
 
                 if (nbLigneGrille == 4)
                 {

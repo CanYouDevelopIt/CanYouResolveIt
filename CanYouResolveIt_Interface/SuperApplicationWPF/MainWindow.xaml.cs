@@ -33,15 +33,14 @@ namespace SuperApplicationWPF
             openFileDialog.Filter = "Sudoku files (*.sud, *.sudx) | *.sud; *.sudx;";
             if (openFileDialog.ShowDialog() == true)
             {
-                Console.WriteLine(openFileDialog.FileName);
-
                 SudokuManager monSudokuManager = new SudokuManager();
                 List<Grille> grilleChargees = null;
 
-                string test = "C:\\Users\\Gaëtan\\Desktop\\sudoku.sud";
-                grilleChargees = monSudokuManager.chargementFichier(test);
-                App.ViewModelSudoku.ListInfoSudoku(grilleChargees);
+                //MessageBox.Show(openFileDialog.FileName);
 
+                grilleChargees = monSudokuManager.chargementFichier(openFileDialog.FileName);
+
+                App.ViewModelSudoku.ListInfoSudoku(grilleChargees);
             }
         }
 
