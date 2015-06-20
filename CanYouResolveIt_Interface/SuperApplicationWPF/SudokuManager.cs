@@ -51,13 +51,19 @@ namespace SuperApplicationWPF
                 }
                 else { nbLigneGrille++; }
 
-                if (nbLigneGrille == 2) { g.Nom = ligne; /*MessageBox.Show(ligne);*/ }
-                if (nbLigneGrille == 3) { g.Date = ligne; /*MessageBox.Show(ligne);*/ }
+                if (nbLigneGrille == 2) { g.Nom = ligne; /*MessageBox.Show(g.Nom);*/ }
+                if (nbLigneGrille == 3) { g.Date = ligne; /*MessageBox.Show(g.Date);*/ }
 
                 if (nbLigneGrille == 4)
                 {
                     g.Symboles = ligne;
+
+                    /*MessageBox.Show(g.Symboles);*/
+
                     g.Tab = new Case[g.Symboles.Length][];
+
+                    /*MessageBox.Show(""+g.Tab.Length);*/
+
                     nbLigneMax = 4 + g.Symboles.Length;
                 }
 
@@ -85,10 +91,14 @@ namespace SuperApplicationWPF
 
                 if (nbLigneGrille == nbLigneMax)
                 {
+                    MessageBox.Show(g.Nom);
                     grillesChargees.Add(g);
                 }
 
             }
+
+            //Problème grille vide?!
+            MessageBox.Show(""+grillesChargees.Count);
 
             return grillesChargees;
         }
