@@ -90,6 +90,11 @@ namespace SuperApplicationWPF
         private void Resoudre_sudoku(object sender, RoutedEventArgs e)
         {
             Grille g = App.ViewModelSudoku.GrilleSelect;
+            if (g.resoudreSudoku(0))
+            {
+                MessageBox.Show("Sudoku Résolu");
+                refreshGrille(g);
+            }
 
         }
 
@@ -98,6 +103,36 @@ namespace SuperApplicationWPF
             Grille g = App.ViewModelSudoku.GrilleSelect;
             if(g != null)
                 MessageBox.Show(g.verifierGrille());
+        }
+
+        private void refreshGrille(Grille g)
+        {
+
+            for (int i = 0; i < g.Taille; i++)
+            {
+                for (int j = 0; j < g.Taille; j++)
+                {
+                    char val = g.Tab[i][j].Valeur;
+                    if (val == '.')
+                    {
+                        Rectangle r = new Rectangle();
+                        r.Fill = new SolidColorBrush(Colors.Azure);
+                        r.ToolTip = g.Tab[i][j].Hypotheses;
+                        Grid.SetRow(r, i);
+                        Grid.SetColumn(r, j);
+                        FrontGrille.Children.Add(r);
+                    }
+                    else
+                    {
+                        Button tb = new Button();
+                        tb.Click += tb_click;
+                        tb.Content = g.Tab[i][j].Valeur.ToString();
+                        Grid.SetRow(tb, i);
+                        Grid.SetColumn(tb, j);
+                        FrontGrille.Children.Add(tb);
+                    }
+                }
+            }
         }
 
     }
