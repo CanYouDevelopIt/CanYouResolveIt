@@ -19,20 +19,8 @@ namespace SuperApplicationWPF
 
         public SudokuViewModel()
         {
-            NomApplication = "Can You Resolve It";
+            NomApplication = "Can You Resolve It ?";
             GrilleList = new ObservableCollection<Grille>();
-
-            GrilleList.Add(new Grille
-            {
-                Nom = "Grille 1",
-                Date = "2015, 06, 17",
-                Symboles = "123456789"
-            });
-
-            foreach (var grille in GrilleList)
-            {
-                grille.InitTabCase();
-            }
         }
 
 
@@ -40,22 +28,15 @@ namespace SuperApplicationWPF
         {
             foreach (Grille g in grille)
             {
-                MessageBox.Show(g.Nom);
-                MessageBox.Show(g.Date);
-                MessageBox.Show(g.Symboles); 
 
                 Grille uneGrille = new Grille
                 {
                     Nom = g.Nom,
                     Date = g.Date,
-                    Symboles = g.Symboles
+                    Symboles = g.Symboles,
+                    Tab = g.Tab
                 };
                 GrilleList.Add(uneGrille);
-            }
-
-            foreach (var g in GrilleList)
-            {
-                g.InitTabCase();
             }
 
         }

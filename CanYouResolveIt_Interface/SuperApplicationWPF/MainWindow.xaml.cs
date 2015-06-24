@@ -36,7 +36,6 @@ namespace SuperApplicationWPF
                 SudokuManager monSudokuManager = new SudokuManager();
                 List<Grille> grilleChargees = null;
 
-                //MessageBox.Show(openFileDialog.FileName);
 
                 grilleChargees = monSudokuManager.chargementFichier(openFileDialog.FileName);
 
@@ -60,24 +59,24 @@ namespace SuperApplicationWPF
             for(int i=0;i<g.Taille;i++){
                 for (int j = 0; j < g.Taille; j++)
                 {
-                    char val = g.Tab2[i, j].Valeur;
+                    char val = g.Tab[i][j].Valeur;
                     if (val == '.')
                     {
                         Rectangle r = new Rectangle();
                         r.Fill = new SolidColorBrush(Colors.Azure);
-                        r.ToolTip = g.Tab2[i, j].Hypotheses;
-                        Grid.SetColumn(r, i);
-                        Grid.SetRow(r, j);
+                        r.ToolTip = g.Tab[i][j].Hypotheses;
+                        Grid.SetRow(r, i);
+                        Grid.SetColumn(r, j);
                         FrontGrille.Children.Add(r);
                     }
                     else{
                     Button tb = new Button();
                     tb.Click += tb_click;
-                    tb.Content = g.Tab2[i, j].Valeur.ToString();
-                    Grid.SetColumn(tb,i);
-                    Grid.SetRow(tb,j);
+                    tb.Content = g.Tab[i][j].Valeur.ToString();
+                    Grid.SetRow(tb, i);
+                    Grid.SetColumn(tb,j);
                     FrontGrille.Children.Add(tb);
-                        }
+                    }
 			}
             }
         }
@@ -86,6 +85,19 @@ namespace SuperApplicationWPF
         {
 
             MessageBox.Show(sender.ToString());
+        }
+
+        private void Resoudre_sudoku(object sender, RoutedEventArgs e)
+        {
+            Grille g = App.ViewModelSudoku.GrilleSelect;
+
+        }
+
+        private void Verifier_sudoku(object sender, RoutedEventArgs e)
+        {
+            Grille g = App.ViewModelSudoku.GrilleSelect;
+            if(g != null)
+                MessageBox.Show(g.verifierGrille());
         }
 
     }

@@ -11,7 +11,6 @@ namespace SuperApplicationWPF
         public string Date { get; set; }
         public string Symboles { get; set; }
         public int Taille { get { return Symboles.Length; } }
-        public Case[,] Tab2 { get; set; }
 
         private Case[][] tab;
 
@@ -21,21 +20,6 @@ namespace SuperApplicationWPF
             set { tab = value; }
         }
 
-        public void InitTabCase()
-        {
-            Tab2 = new Case[Taille, Taille];
-            Random rand = new Random();
-            int x = rand.Next();
-            for (int i = 0; i < Taille; i++)
-            {
-                for (int j = 0; j < Taille; j++)
-                {
-                    x = rand.Next(0, Taille + 1);
-                    char uneValeur = (x == Taille) ? '.' : Symboles[x];
-                    Tab2[i, j] = new Case(uneValeur, Symboles);
-                }
-            }
-        }
 
           public string verifierGrille()
         {
@@ -142,6 +126,9 @@ namespace SuperApplicationWPF
 
                 }
             }
+
+            if (messageErreur.Equals(""))
+                return "La Grille Correcte";
 
             return messageErreur;
         }
