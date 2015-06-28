@@ -64,7 +64,7 @@ namespace SuperApplicationWPF
                             if (val == '.')
                             {
                                 Rectangle r = new Rectangle();
-                                r.Fill = new SolidColorBrush(Colors.Azure);
+                                r.Fill = new SolidColorBrush(Colors.LemonChiffon);
                                 r.ToolTip = g.Tab[i][j].Hypotheses;
                                 Grid.SetRow(r, i);
                                 Grid.SetColumn(r, j);
@@ -72,6 +72,7 @@ namespace SuperApplicationWPF
                             }
                             else{
                             Button tb = new Button();
+                            tb.Background = Brushes.Khaki;
                             tb.Click += tb_click;
                             tb.Content = g.Tab[i][j].Valeur.ToString();
                             Grid.SetRow(tb, i);
@@ -103,8 +104,11 @@ namespace SuperApplicationWPF
         private void Verifier_sudoku(object sender, RoutedEventArgs e)
         {
             Grille g = App.ViewModelSudoku.GrilleSelect;
-            if(g != null)
+            if (g != null)
+            { 
                 MessageBox.Show(g.verifierGrille());
+                refreshGrille(g);
+            }
         }
 
         private void refreshGrille(Grille g)
@@ -118,7 +122,7 @@ namespace SuperApplicationWPF
                     if (val == '.')
                     {
                         Rectangle r = new Rectangle();
-                        r.Fill = new SolidColorBrush(Colors.Azure);
+                        r.Fill = new SolidColorBrush(Colors.LemonChiffon);
                         r.ToolTip = g.Tab[i][j].Hypotheses;
                         Grid.SetRow(r, i);
                         Grid.SetColumn(r, j);
@@ -127,6 +131,7 @@ namespace SuperApplicationWPF
                     else
                     {
                         Button tb = new Button();
+                        tb.Background = Brushes.Khaki;
                         tb.Click += tb_click;
                         tb.Content = g.Tab[i][j].Valeur.ToString();
                         Grid.SetRow(tb, i);
