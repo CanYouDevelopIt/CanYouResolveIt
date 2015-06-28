@@ -51,33 +51,35 @@ namespace SuperApplicationWPF
             FrontGrille.ShowGridLines = true;
 
             Grille g = App.ViewModelSudoku.GrilleSelect;
-            for (int i = 0; i < g.Taille; i++) {
-                FrontGrille.RowDefinitions.Add(new RowDefinition());
-                FrontGrille.ColumnDefinitions.Add(new ColumnDefinition());
-            }
+            if (g != null) {
+                    for (int i = 0; i < g.Taille; i++) {
+                        FrontGrille.RowDefinitions.Add(new RowDefinition());
+                        FrontGrille.ColumnDefinitions.Add(new ColumnDefinition());
+                    }
 
-            for(int i=0;i<g.Taille;i++){
-                for (int j = 0; j < g.Taille; j++)
-                {
-                    char val = g.Tab[i][j].Valeur;
-                    if (val == '.')
-                    {
-                        Rectangle r = new Rectangle();
-                        r.Fill = new SolidColorBrush(Colors.Azure);
-                        r.ToolTip = g.Tab[i][j].Hypotheses;
-                        Grid.SetRow(r, i);
-                        Grid.SetColumn(r, j);
-                        FrontGrille.Children.Add(r);
-                    }
-                    else{
-                    Button tb = new Button();
-                    tb.Click += tb_click;
-                    tb.Content = g.Tab[i][j].Valeur.ToString();
-                    Grid.SetRow(tb, i);
-                    Grid.SetColumn(tb,j);
-                    FrontGrille.Children.Add(tb);
-                    }
-			}
+                    for(int i=0;i<g.Taille;i++){
+                        for (int j = 0; j < g.Taille; j++)
+                        {
+                            char val = g.Tab[i][j].Valeur;
+                            if (val == '.')
+                            {
+                                Rectangle r = new Rectangle();
+                                r.Fill = new SolidColorBrush(Colors.Azure);
+                                r.ToolTip = g.Tab[i][j].Hypotheses;
+                                Grid.SetRow(r, i);
+                                Grid.SetColumn(r, j);
+                                FrontGrille.Children.Add(r);
+                            }
+                            else{
+                            Button tb = new Button();
+                            tb.Click += tb_click;
+                            tb.Content = g.Tab[i][j].Valeur.ToString();
+                            Grid.SetRow(tb, i);
+                            Grid.SetColumn(tb,j);
+                            FrontGrille.Children.Add(tb);
+                            }
+			        }
+            }
             }
         }
 

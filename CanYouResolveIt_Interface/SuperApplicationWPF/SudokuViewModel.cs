@@ -26,6 +26,12 @@ namespace SuperApplicationWPF
 
         public void ListInfoSudoku(List<Grille> grille)
         {
+            if (GrilleList.Count > 0) {
+                // Suppression de tous les lists de sudokus
+                GrilleList.Clear();
+            }
+
+
             foreach (Grille g in grille)
             {
 
