@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -94,7 +95,7 @@ namespace SuperApplicationWPF
             Grille g = App.ViewModelSudoku.GrilleSelect;
             if (g.resoudreSudoku(0))
             {
-                MessageBox.Show("Sudoku Résolu");
+               // MessageBox.Show("Sudoku Résolu");
                 refreshGrille(g);
             }
 
@@ -109,7 +110,6 @@ namespace SuperApplicationWPF
 
         private void refreshGrille(Grille g)
         {
-
             for (int i = 0; i < g.Taille; i++)
             {
                 for (int j = 0; j < g.Taille; j++)

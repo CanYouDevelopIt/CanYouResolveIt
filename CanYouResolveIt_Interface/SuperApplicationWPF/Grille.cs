@@ -128,7 +128,7 @@ namespace SuperApplicationWPF
             }
 
             if (messageErreur.Equals(""))
-                return "La Grille Correcte";
+                return "La Grille est Correcte";
 
             return messageErreur;
         }
