@@ -27,11 +27,11 @@
         </StackPanel>
 
         <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding GrilleSelect.Nom}"/>
-        <ListBox Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" ItemsSource="{Binding GrilleList}"
+        <ListBox Grid.Column="0" Grid.RowSpan="3" ItemsSource="{Binding GrilleList}"
                  SelectedItem="{Binding GrilleSelect}"
                  SelectionChanged="ListBox_SelectionChanged"
                  HorizontalContentAlignment="Stretch"
-                 ToolTip="{Binding GrilleList.Count}">
+                 ToolTip="{Binding GrilleList.Count}" Margin="0,139,143.8,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -46,8 +46,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Grid Name="FrontGrille" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
-
-        </Grid>
+        <Grid Name="FrontGrille" Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="258,139,-0.4,0"/>
     </Grid>
 </Window>
