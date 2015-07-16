@@ -22,6 +22,9 @@ namespace SuperApplicationWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public List<Grille> grilleChargees = new List<Grille>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -35,9 +38,6 @@ namespace SuperApplicationWPF
             if (openFileDialog.ShowDialog() == true)
             {
                 SudokuManager monSudokuManager = new SudokuManager();
-                List<Grille> grilleChargees = null;
-
-
                 grilleChargees = monSudokuManager.chargementFichier(openFileDialog.FileName);
 
                 App.ViewModelSudoku.ListInfoSudoku(grilleChargees);
@@ -110,6 +110,14 @@ namespace SuperApplicationWPF
                 MessageBox.Show(g.verifierGrille());
                 refreshGrille(g);
             }
+        }
+
+        private void Generer_sudoku(object sender, RoutedEventArgs e)
+        {
+            SudokuManager monSudokuManager = new SudokuManager();
+            Grille g = monSudokuManager.genererSudoku();
+            grilleChargees.Add(g);
+            App.ViewModelSudoku.ListInfoSudoku(grilleChargees);
         }
 
         private void refreshGrille(Grille g)

@@ -22,6 +22,7 @@
                 <MenuItem Header="Chargement fichier" Click="Chargement_sudoku"/>
                 <MenuItem Header="Résoudre sudoku" Click="Resoudre_sudoku"/>
                 <MenuItem Header="Vérification sudoku" Click="Verifier_sudoku"/>
+                <MenuItem Header="Générer sudoku" Click="Generer_sudoku"/>
             </MenuItem>
         </Menu>
 

@@ -21,6 +21,7 @@ namespace SuperApplicationWPF
         public SudokuManager()
         {
             sudokuResolus = new List<Grille>();
+            sudokuAResoudre = new List<Grille>();
         }
 
         internal void ajouterSudokuResolu(Grille g)
@@ -101,5 +102,57 @@ namespace SuperApplicationWPF
         {
             sudokuAResoudre.Add(g);
         }
+
+        internal Grille genererSudoku()
+        {
+
+            bool sudokuResolved = false;
+            Grille g = null;
+
+            while (!sudokuResolved)
+            {
+
+                g = new Grille();
+                g.Nom = "Sudoku Généré";
+                //g.Date = new DateTime();
+                g.Symboles = "123456789";
+
+                Random rand = new Random();
+                int x = rand.Next();
+
+                g.Tab = new Case[g.Symboles.Length][];
+                for (int i = 0; i < g.Symboles.Length; i++)
+                {
+                    g.Tab[i] = new Case[g.Symboles.Length];
+                    for (int j = 0; j < g.Symboles.Length; j++)
+                    {
+                        g.Tab[i][j] = new Case('.', g.Symboles);
+                    }
+                }
+
+                for (int i = 0; i < g.Symboles.Length; i++)
+                {
+                    for (int j = 0; j < g.Symboles.Length; j++)
+                    {
+                        x = rand.Next(0, g.Symboles.Length);
+                        if (x < g.Symboles.Length)
+                        {
+                            char val = g.Symboles[x];
+                            if(g.absentSurLigne(val,i) && g.absentSurColonne(val,j) && g.absentSurBloc(val,i,j))
+                                g.Tab[i][j] = new Case(val, g.Symboles);
+                        }
+                    }
+                }
+
+                //g.resoudreSudoku(0);
+                //sudokuResolved = (g.verifierGrille() == "");
+                sudokuResolved = true;
+
+            }
+
+            sudokuAResoudre.Add(g);
+            return g;
+        }
+
     }
 }
