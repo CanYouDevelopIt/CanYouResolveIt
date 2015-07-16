@@ -106,47 +106,38 @@ namespace SuperApplicationWPF
         internal Grille genererSudoku()
         {
 
-            bool sudokuResolved = false;
             Grille g = null;
 
-            while (!sudokuResolved)
+            g = new Grille();
+            g.Nom = "Sudoku Généré";
+            //g.Date = new DateTime();
+            g.Symboles = "123456789";
+
+            Random rand = new Random();
+
+            int nbCasesVides = 0;
+
+            g.Tab = new Case[g.Symboles.Length][];
+            for (int i = 0; i < g.Symboles.Length; i++)
             {
-
-                g = new Grille();
-                g.Nom = "Sudoku Généré";
-                //g.Date = new DateTime();
-                g.Symboles = "123456789";
-
-                Random rand = new Random();
-                int x = rand.Next();
-
-                g.Tab = new Case[g.Symboles.Length][];
-                for (int i = 0; i < g.Symboles.Length; i++)
+                g.Tab[i] = new Case[g.Symboles.Length];
+                for (int j = 0; j < g.Symboles.Length; j++)
                 {
-                    g.Tab[i] = new Case[g.Symboles.Length];
-                    for (int j = 0; j < g.Symboles.Length; j++)
-                    {
-                        g.Tab[i][j] = new Case('.', g.Symboles);
-                    }
+                    g.Tab[i][j] = new Case('.', g.Symboles);
                 }
+            }
 
-                for (int i = 0; i < g.Symboles.Length; i++)
-                {
-                    for (int j = 0; j < g.Symboles.Length; j++)
-                    {
-                        x = rand.Next(0, g.Symboles.Length);
-                        if (x < g.Symboles.Length)
-                        {
-                            char val = g.Symboles[x];
-                            if(g.absentSurLigne(val,i) && g.absentSurColonne(val,j) && g.absentSurBloc(val,i,j))
-                                g.Tab[i][j] = new Case(val, g.Symboles);
-                        }
-                    }
+            g.resoudreSudoku(0);
+
+            while (nbCasesVides < rand.Next(40, 60))
+            {
+                int x = rand.Next(0, g.Symboles.Length);
+                int j = rand.Next(0, g.Symboles.Length);
+
+                if(g.Tab[x][j].Valeur != '.'){
+                    g.Tab[x][j].Valeur = '.';
+                    nbCasesVides++;
                 }
-
-                //g.resoudreSudoku(0);
-                //sudokuResolved = (g.verifierGrille() == "");
-                sudokuResolved = true;
 
             }
 

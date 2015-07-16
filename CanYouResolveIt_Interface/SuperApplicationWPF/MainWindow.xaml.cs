@@ -96,8 +96,11 @@ namespace SuperApplicationWPF
             Grille g = App.ViewModelSudoku.GrilleSelect;
             if (g.resoudreSudoku(0))
             {
-               // MessageBox.Show("Sudoku Résolu");
                 refreshGrille(g);
+            }
+            else
+            {
+                MessageBox.Show("Sudoku non Résolu");
             }
 
         }
